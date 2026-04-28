@@ -1,0 +1,29 @@
+{
+  "name": "lib-components-react",
+  "version": "0.1.0",
+  "private": true,
+  "main": "dist/index.js",
+  "module": "dist/index.esm.js",
+  "types": "dist/index.d.ts",
+  "files": ["dist"],
+  "scripts": {
+    "build": "tsc -p tsconfig.build.json && vite build --config example/vite.config.ts",
+    "dev": "vite --config example/vite.config.ts",
+    "test": "echo \"No tests configured\""
+  },
+  "peerDependencies": {
+    "react": "^18 || ^17",
+    "react-dom": "^18 || ^17"
+  },
+  "devDependencies": {
+    "@types/react": "^18.0.0",
+    "@types/react-dom": "^18.0.0",
+    "@vitejs/plugin-react": "^4.0.0",
+    
+    "typescript": "^5.0.0",
+    "vite": "^5.0.0",
+    "react": "^18.0.0",
+    "react-dom": "^18.0.0",
+    "react-hook-form": "^7.0.0"
+  }
+}

@@ -1,0 +1,29 @@
+/* Basic CSS for the component library (no Tailwind) */
+:root{
+  --bg: #ffffff;
+  --text: #0f172a;
+  --muted: #6b7280;
+  --border: #e6e8eb;
+  --accent: #0ea5e9;
+  --danger: #dc2626;
+}
+
+*{box-sizing:border-box}
+body{margin:0;font-family:Inter,ui-sans-serif,system-ui,Segoe UI,Roboto,'Helvetica Neue',Arial}
+
+.lc-button{display:inline-flex;align-items:center;justify-content:center;border-radius:6px;padding:8px 12px;font-size:14px;font-weight:500;border:1px solid var(--border);background:var(--accent);color:white;cursor:pointer}
+.lc-button.ghost{background:transparent;color:var(--text);border:1px solid transparent}
+.lc-button:disabled{opacity:0.6;cursor:not-allowed}
+
+.lc-field{display:flex;flex-direction:column;gap:6px}
+.lc-label{font-size:13px;font-weight:600;color:var(--text)}
+.lc-input{padding:8px 10px;border-radius:6px;border:1px solid var(--border);font-size:14px}
+.lc-input:focus{outline:2px solid rgba(14,165,233,0.15);}
+.lc-error{color:var(--danger);font-size:12px}
+
+.demo-root{display:flex;height:100vh}
+.demo-sidebar{width:220px;border-right:1px solid var(--border);padding:12px}
+.demo-content{flex:1;padding:20px}
+.component-item{padding:8px;border-radius:6px;cursor:pointer}
+.component-item:hover{background:#f5f7fa}
+.component-item.active{background:#eef6fb}
