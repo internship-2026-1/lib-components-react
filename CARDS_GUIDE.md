@@ -11,13 +11,14 @@ Tarjeta básica y flexible que puede mostrar imagen, título, descripción y acc
 #### Props
 
 ```typescript
-interface CardProps extends React.HTMLAttributes<HTMLDivElement> {
+interface CardProps extends Omit<React.HTMLAttributes<HTMLDivElement>, 'title'> {
   image?: string           // URL de la imagen
   imageAlt?: string        // Texto alternativo para la imagen
   title?: React.ReactNode  // Título de la tarjeta
   description?: React.ReactNode  // Descripción
   footer?: React.ReactNode // Contenido del footer (botones, etc)
-  badge?: string           // Badge en la esquina superior derecha
+  badge?: string           // Badge superpuesto en la esquina de la imagen
+  tags?: string[]          // Array de etiquetas que se muestran bajo la descripción
 }
 ```
 
@@ -36,6 +37,7 @@ export default function ProductCard() {
       title="Producto Premium"
       description="Descripción del producto con características principales."
       badge="NUEVO"
+      tags={['React', 'CSS', 'Component']}
       footer={<Button>Comprar</Button>}
     />
   )
@@ -48,6 +50,7 @@ export default function ProductCard() {
 <Card
   title="Artículo"
   description="Una tarjeta simple sin imagen."
+  tags={['Tag 1', 'Tag 2']}
   footer={<Button>Leer más</Button>}
 />
 ```
@@ -133,11 +136,10 @@ Tarjeta promocional de gran impacto visual con fondo completo.
 #### Props
 
 ```typescript
-interface PromoCardProps extends React.HTMLAttributes<HTMLDivElement> {
+interface PromoCardProps extends Omit<React.HTMLAttributes<HTMLDivElement>, 'title'> {
   title?: React.ReactNode        // Título principal
   description?: React.ReactNode  // Descripción/subtítulo
-  badge?: string                 // Badge opcional
-  backgroundColor?: string       // Color de fondo (default: #0ea5e9)
+  backgroundColor?: string       // Color de fondo (default: #0056C3)
 }
 ```
 
@@ -153,8 +155,7 @@ export default function PromoBanner() {
     <PromoCard
       title="Promoción"
       description="Descuento del 15% en componentes seleccionados este mes."
-      badge="NUEVO"
-      backgroundColor="#0ea5e9"
+      backgroundColor="#0056C3"
     />
   )
 }
@@ -166,7 +167,6 @@ export default function PromoBanner() {
 <PromoCard
   title="Black Friday"
   description="Hasta 50% de descuento en todos los productos."
-  badge="OFERTA"
   backgroundColor="#dc2626"
 />
 ```
@@ -174,9 +174,7 @@ export default function PromoBanner() {
 **Promo card con contenido custom:**
 
 ```jsx
-<PromoCard backgroundColor="#7c3aed">
-  <h2>¡Únete a nuestro programa!</h2>
-  <p>Obtén acceso exclusivo a nuevas características.</p>
+<PromoCard backgroundColor="#7c3aed" title="¡Únete!" description="Obtén acceso exclusivo">
   <Button>Empezar ahora</Button>
 </PromoCard>
 ```
@@ -253,7 +251,23 @@ export default function SupportCard() {
 ```
 
 ---
+�️ Etiquetas (Tags)
 
+La prop `tags` permite agregar etiquetas a las tarjetas:
+
+```jsx
+<Card
+  title="Artículo"
+  description="Con etiquetas"
+  tags={['React', 'CSS', 'TypeScript', 'Component']}
+/>
+```
+
+Las etiquetas se renderizan como elementos inline con estilo personalizable editando `.lc-card-tag` en el CSS.
+
+---
+
+## �
 ## 🎨 Personalización con CSS
 
 Todos los componentes utilizan variables CSS que se pueden personalizar:
