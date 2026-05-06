@@ -1,9 +1,9 @@
 import React, { useState } from 'react'
-import { Input, Button, FormField, Textarea, Select } from 'lib'
+import { Input, Button, FormField, Textarea, Select, Card, CardGrid, PromoCard, InfoCard } from 'lib'
 
-type ComponentKey = 'Button' | 'Input' | 'Textarea' | 'Select'
+type ComponentKey = 'Button' | 'Input' | 'Textarea' | 'Select' | 'Cards'
 
-const components: ComponentKey[] = ['Button', 'Input', 'Textarea', 'Select']
+const components: ComponentKey[] = ['Button', 'Input', 'Textarea', 'Select', 'Cards']
 
 export default function App() {
   const [selected, setSelected] = useState<ComponentKey>('Button')
@@ -96,6 +96,46 @@ export default function App() {
                     <option>Disabled</option>
                   </Select>
                 </FormField>
+              </div>
+            </div>
+          </div>
+        )
+
+      case 'Cards':
+        return (
+          <div>
+            <h2>Tarjetas &amp; Grids</h2>
+
+            {/* Figma layout: 2-column asymmetric grid */}
+            <div style={{display:'grid', gridTemplateColumns:'1fr 1fr', gap:20, alignItems:'start'}}>
+              {/* Left: tall product card */}
+              <Card
+                image="https://images.unsplash.com/photo-1591488320449-011701bb6704?w=800&h=500&fit=crop"
+                imageAlt="PC Gaming"
+                title="Horizon Alpha X"
+                description="Workstation de alto rendimiento para renderizado 3D y simulaciones."
+                badge="NUEVO"
+                tags={['64GB RAM', 'RTX 4090']}
+                footer={<Button>DETALLES</Button>}
+              />
+
+              {/* Right: PromoCard + InfoCard stacked */}
+              <div style={{display:'flex', flexDirection:'column', gap:20}}>
+                <PromoCard
+                  title="Promoción"
+                  description="Descuento del 15% en componentes seleccionados este mes."
+                  backgroundColor="#0056C3"
+                />
+                <InfoCard
+                  icon={
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#0056C3" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                      <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
+                      <circle cx="12" cy="7" r="4"/>
+                    </svg>
+                  }
+                  title="Soporte Técnico 24/7"
+                  description="Asistencia experta para tu configuración."
+                />
               </div>
             </div>
           </div>
