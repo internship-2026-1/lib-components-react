@@ -24,12 +24,12 @@ Diseño y compatibilidad
 # Lib - RadioButton
 Asegúrate de tener el código del componente (RadioButton.tsx) y sus estilos (styles.css) en tu carpeta de componentes (por ejemplo, en src/components/).
 
-1. Importar el componente
+1. Importar el componente<br>
 En el archivo donde quieras usarlo (por ejemplo, en un formulario o una página), impórtalo así:<br>
 import { RadioButton } from './components/RadioButton';<br>
 import './components/styles.css'; // Asegúrate de cargar los estilos.
 
-2. Implementar el estado (State)
+2. Implementar el estado (State)<br>
 Para que React sepa cuál está seleccionado, necesitas un estado que guarde el valor actual:
 
 const [opcion, setOpcion] = useState('');
@@ -38,7 +38,7 @@ const manejarCambio = (e: React.ChangeEvent< HTMLInputElement>) => {<br>
   setOpcion(e.target.value);
 };
 
-3. Renderizar los RadioButtons
+3. Renderizar los RadioButtons<br>
 Úsalos pasando siempre el mismo name para que actúen como grupo, y compara el value con tu estado para el prop checked:
 
 < div><br>
