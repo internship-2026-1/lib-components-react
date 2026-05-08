@@ -1,9 +1,9 @@
 import React, { useState } from 'react'
-import { Input, Button, FormField, Textarea, Select } from 'lib'
+import { Input, Button, FormField, Textarea, Select, Text } from 'lib'
 
-type ComponentKey = 'Button' | 'Input' | 'Textarea' | 'Select'
+type ComponentKey = 'Button' | 'Input' | 'Textarea' | 'Select' | 'Typography'
 
-const components: ComponentKey[] = ['Button', 'Input', 'Textarea', 'Select']
+const components: ComponentKey[] = ['Button', 'Input', 'Textarea', 'Select', 'Typography']
 
 export default function App() {
   const [selected, setSelected] = useState<ComponentKey>('Button')
@@ -101,7 +101,48 @@ export default function App() {
           </div>
         )
 
+      case 'Typography':
+        return(
+          <div>
+            <h2>Typography</h2>
+            <div className="typography-column">
+              <div className="panel">
+                <Text variant='DisplayLarge'>
+                  Ingenieria de precision
+                </Text>
+              </div>
+
+              <div className='panel'>
+                <Text variant='HeadlineLarge'>
+                  Rendimiento de limites
+                </Text>
+              </div>
+
+              <div className='panel'>
+                <Text variant='HeadlineMedium'>
+                  Especificaciones tecnicas
+                </Text>
+              </div>
+              <div className='panel'>
+                <Text variant='BodyLarge'>
+                  Diseñado para entusiastas y profesionales que valoran la calidad de construcción y los detalles técnicos.
+                </Text>
+              </div>
+              <div className='panel'>
+                <Text variant='LabelLarge'>
+                  CONFIGURAR AHORA
+                </Text>
+              </div>
+              <div className='panel'>
+                <Text variant='code'>
+                  npm install @techspec/core
+                </Text>
+              </div>
+            </div>
+          </div>
+        )
       default:
+
         return null
     }
   }

@@ -3,3 +3,4 @@ export { Input } from './ui/Input'
 export { Textarea } from './ui/Textarea'
 export { Select } from './ui/Select'
 export { FormField } from './ui/FormField'
+export { Text } from "./ui/Typography";
