@@ -3,6 +3,7 @@ export { Input } from './ui/Input'
 export { Textarea } from './ui/Textarea'
 export { Select } from './ui/Select'
 export { FormField } from './ui/FormField'
+<<<<<<< HEAD
 export { RadioButton } from  './ui/RadioButton'
 export { Card } from './ui/Card'
 export { CardGrid } from './ui/CardGrid'
@@ -18,3 +19,6 @@ export type {
   SpecificationSection,
   SimpleTableRow,
 } from "./ui/Table2";
+=======
+export { Table } from './ui/Table'
+>>>>>>> feature/componente-tabla-luis
