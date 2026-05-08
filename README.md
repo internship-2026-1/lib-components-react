@@ -41,16 +41,16 @@ const manejarCambio = (e: React.ChangeEvent< HTMLInputElement>) => {<br>
 3. Renderizar los RadioButtons
 Úsalos pasando siempre el mismo name para que actúen como grupo, y compara el value con tu estado para el prop checked:
 
-< div>
-  < RadioButton 
+< div><br>
+  < RadioButton<br> 
     name="grupo1"  -- El nombre vincula los botones como un solo equipo <br>
     value="A"  -- El valor único de este botón<br>
     checked={opcion === 'A'}  -- Condición para que se pinte como seleccionado<br>
     onChange={manejarCambio}  -- Función que se activa al hacer clic<br>
   />
   
-  < div>
-    < RadioButton 
+  < div><br>
+    < RadioButton<br>
       name="grupo1" <br>
       value="B"  <br>
       checked={opcion === 'B'}  <br>
