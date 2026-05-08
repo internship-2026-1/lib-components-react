@@ -18,6 +18,9 @@ build/
 
 # OS
 .DS_Store
+
+# Documentation (local only)
+CARDS_GUIDE.md
 Thumbs.db
 
 # Logs

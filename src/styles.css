@@ -1,17 +1,24 @@
+@import url("https://cdn.jsdelivr.net/npm/geist@1.3.1/dist/fonts/geist-sans/style.css");
+@import url("https://cdn.jsdelivr.net/npm/geist@1.3.1/dist/fonts/geist-mono/style.css");
 /* Basic CSS for the component library (no Tailwind) */
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap');
+
 :root{
   --bg: #ffffff;
-  --text: #0f172a;
-  --muted: #6b7280;
+  --text: #191C1E;
+  --muted: #565E74;
   --border: #e6e8eb;
-  --accent: #0ea5e9;
-  --danger: #dc2626;
+  --accent: #0056C3;
+  --container: #256FE7;
+  --surface: #ECEEF0;
+  --danger: #BA1A1A;
+  --on-surface: #191C1E;
 }
 
 *{box-sizing:border-box}
-body{margin:0;font-family:Inter,ui-sans-serif,system-ui,Segoe UI,Roboto,'Helvetica Neue',Arial}
+body{margin:0;font-family:'Manrope',ui-sans-serif,system-ui,'Segoe UI',Roboto,'Helvetica Neue',Arial}
 
-.lc-button{display:inline-flex;align-items:center;justify-content:center;border-radius:6px;padding:8px 12px;font-size:14px;font-weight:500;border:1px solid var(--border);background:var(--accent);color:white;cursor:pointer}
+.lc-button{display:inline-flex;align-items:center;justify-content:center;border-radius:6px;padding:8px 12px;font-size:14px;font-weight:700;letter-spacing:0.05em;border:none;background:var(--on-surface);color:white;cursor:pointer;font-family:'Manrope',sans-serif}
 .lc-button.ghost{background:transparent;color:var(--text);border:1px solid transparent}
 .lc-button:disabled{opacity:0.6;cursor:not-allowed}
 
@@ -82,4 +89,134 @@ body{margin:0;font-family:Inter,ui-sans-serif,system-ui,Segoe UI,Roboto,'Helveti
 /* Mostrar el punto azul al seleccionar */
 .is-checked .radio-circle::after {
   transform: scale(1);
+}
+/* Card Components */
+.lc-card{display:flex;flex-direction:column;background:var(--bg);border:1px solid var(--border);border-radius:12px;overflow:hidden;box-shadow:0 1px 3px rgba(0,0,0,0.08);transition:box-shadow 0.2s ease}
+.lc-card:hover{box-shadow:0 4px 16px rgba(0,0,0,0.12)}
+
+.lc-card-image{width:100%;height:220px;overflow:hidden;background:#f5f5f5;position:relative}
+.lc-card-image img{width:100%;height:100%;object-fit:cover}
+
+/* Badge sits on top of the image */
+.lc-card-badge{position:absolute;top:12px;right:12px;display:inline-block;background:var(--accent);color:white;font-size:12px;font-weight:700;padding:4px 10px;border-radius:6px;letter-spacing:0.04em;z-index:1}
+
+.lc-card-content{flex:1;padding:20px;display:flex;flex-direction:column;gap:10px}
+
+.lc-card-title{margin:0;font-size:22px;font-weight:800;color:var(--text);line-height:1.2}
+
+.lc-card-description{margin:0;font-size:15px;color:var(--muted);line-height:1.6}
+
+/* Tags/chips row */
+.lc-card-tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:2px}
+.lc-card-tag{display:inline-block;background:var(--surface);color:var(--text);font-size:13px;font-weight:500;padding:4px 12px;border-radius:20px;border:1px solid var(--border)}
+
+.lc-card-footer{padding:16px 20px;display:flex;gap:8px}
+.lc-card-footer .lc-button{width:100%;justify-content:center;padding:14px;font-size:13px;border-radius:8px}
+
+/* Card Grid */
+.lc-grid{display:grid;grid-template-columns:repeat(var(--grid-columns, 3), 1fr);gap:var(--grid-gap, 20px);width:100%}
+
+@media (max-width: 1024px){
+  .lc-grid{grid-template-columns:repeat(var(--grid-columns-lg, 2), 1fr)}
+}
+
+@media (max-width: 768px){
+  .lc-grid{grid-template-columns:1fr}
+}
+
+/* Promo Card */
+.lc-promo-card{display:flex;flex-direction:column;justify-content:space-between;padding:28px 32px;border-radius:12px;color:white;position:relative;overflow:hidden;min-height:160px}
+
+.lc-promo-card-content{z-index:2;position:relative}
+
+.lc-promo-card-title{margin:0 0 10px 0;font-size:26px;font-weight:800;line-height:1.2}
+
+.lc-promo-card-description{margin:0;font-size:15px;opacity:0.85;line-height:1.6}
+
+/* Tag icon bottom-right */
+.lc-promo-card-icon{position:absolute;bottom:20px;right:24px;opacity:0.35;z-index:1}
+.lc-promo-card-icon svg{width:44px;height:44px;fill:none;stroke:white;stroke-width:1.5}
+
+/* Info Card */
+.lc-info-card{display:flex;gap:20px;padding:24px 28px;background:var(--surface);border:none;border-radius:12px;align-items:center}
+
+.lc-info-card-icon{flex-shrink:0;width:36px;height:36px;display:flex;align-items:center;justify-content:center;font-size:22px;color:var(--accent)}
+
+.lc-info-card-content{flex:1}
+
+.lc-info-card-title{margin:0 0 2px 0;font-size:15px;font-weight:700;color:var(--text)}
+
+.lc-info-card-description{margin:0;font-size:13px;color:var(--muted);line-height:1.4}
+
+/*------ Diseno Typography -----------*/
+.typography {
+  font-family: "Geist", sans-serif;
+  color: #191C1E;
+  margin: 0;
+}
+
+/* DisplayLarge = Geist Sans Extra bold */
+.typography--display-large {
+  font-size: 48px;
+  font-weight: 800;
+  line-height: 52.8px;
+  letter-spacing: -0.96px;
+}
+
+/* HeadlineLarge = Geist Sans Bold */
+.typography--headline-large {
+  font-size: 32px;
+  font-weight: 700;
+  line-height: 38.4px;
+  letter-spacing: -0.32px;
+}
+
+/* HeadlineMedium = Geist Sans semi bold */
+.typography--headline-medium {
+  font-size: 24px;
+  font-weight: 600;
+  line-height: 31.2px;
+  letter-spacing: 0;
+}
+
+/* BodyLarge = Geist Sans regular */
+.typography--body-large {
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 28.8px;
+  letter-spacing: 0;
+}
+
+/* LabelLarge = Geist Sans semi bold */
+.typography--label-large {
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 16.8px;
+  letter-spacing: 0.28px;
+}
+
+/* Code = Geist Mono regular*/
+.typography--code {
+  font-family: "Geist Mono", monospace;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 19.6px;
+  letter-spacing: 0;
+}
+
+/*adicional panel*/
+.typography-column {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  align-items: flex-start;
+}
+
+.typography-column .panel {
+  width: 650px;
+  max-width: 100%;
+  padding: 12px 16px;
+  border: 1px solid #E6E8EB;
+  border-radius: 8px;
+  background-color: #FFFFFF;
 }
