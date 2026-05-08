@@ -109,6 +109,7 @@ export default function App() {
             {/* Figma layout: 2-column asymmetric grid */}
             <div style={{display:'grid', gridTemplateColumns:'1fr 1fr', gap:20, alignItems:'start'}}>
               {/* Left: tall product card */}
+              
               <Card
                 image="https://images.unsplash.com/photo-1591488320449-011701bb6704?w=800&h=500&fit=crop"
                 imageAlt="PC Gaming"
@@ -118,7 +119,16 @@ export default function App() {
                 tags={['64GB RAM', 'RTX 4090']}
                 footer={<Button>DETALLES</Button>}
               />
-
+              <Card
+                image="https://images.unsplash.com/photo-1591488320449-011701bb6704?w=800&h=500&fit=crop"
+                imageAlt="PC Gaming"
+                title="Horizon Alpha X"
+                description="Workstation de alto rendimiento para renderizado 3D y simulaciones."
+                badge="NUEVO"
+                tags={['64GB RAM', 'RTX 4090']}
+                footer={<Button>DETALLES</Button>}
+              />
+              
               {/* Right: PromoCard + InfoCard stacked */}
               <div style={{display:'flex', flexDirection:'column', gap:20}}>
                 <PromoCard

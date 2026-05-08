@@ -155,7 +155,6 @@ export default function PromoBanner() {
     <PromoCard
       title="Promoción"
       description="Descuento del 15% en componentes seleccionados este mes."
-      backgroundColor="#0056C3"
     />
   )
 }
@@ -167,7 +166,7 @@ export default function PromoBanner() {
 <PromoCard
   title="Black Friday"
   description="Hasta 50% de descuento en todos los productos."
-  backgroundColor="#dc2626"
+  backgroundColor="#BA1A1A"
 />
 ```
 
@@ -276,12 +275,15 @@ Todos los componentes utilizan variables CSS que se pueden personalizar:
 
 ```css
 :root {
-  --bg: #ffffff;              /* Color de fondo */
-  --text: #0f172a;            /* Color de texto principal */
-  --muted: #6b7280;           /* Color de texto secundario */
+  --bg: #ffffff;              /* Color de fondo principal */
+  --text: #191C1E;            /* Color de texto principal */
+  --muted: #565E74;           /* Color de texto secundario */
   --border: #e6e8eb;          /* Color de bordes */
-  --accent: #0ea5e9;          /* Color de énfasis (badges, promos) */
-  --danger: #dc2626;          /* Color de error/peligro */
+  --accent: #0056C3;          /* Color de énfasis (badges, botones) */
+  --container: #256FE7;       /* Color de contenedor secundario */
+  --surface: #ECEEF0;         /* Color de superficie/fondo secundario */
+  --danger: #BA1A1A;          /* Color de error/peligro */
+  --on-surface: #191C1E;      /* Color de texto sobre superficie */
 }
 ```
 
@@ -292,8 +294,9 @@ Todos los componentes utilizan variables CSS que se pueden personalizar:
 :root {
   --bg: #f9fafb;
   --text: #111827;
-  --accent: #3b82f6;
+  --accent: #0056C3;
   --danger: #ef4444;
+  --surface: #E8EAED;
 }
 ```
 
@@ -393,7 +396,7 @@ Personalizar breakpoints editando `src/styles.css`:
   <PromoCard
     title="Bienvenido"
     description="Descubre nuestros servicios"
-    backgroundColor="#0ea5e9"
+    backgroundColor="#256FE7"
   />
 
   {/* Grid de tarjetas */}
