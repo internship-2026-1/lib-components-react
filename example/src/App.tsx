@@ -128,21 +128,36 @@ export default function App() {
             <Table2
               variant="progress"
               title="Especificaciones Técnicas"
-              col1="Componente"
-              col2="Especificación"
-              col3="Estado"
+              columns={[
+                {
+                  header: "Componente",
+                  accessor: "componente",
+                },
+                {
+                  header: "Especificación",
+                  accessor: "especificacion",
+                },
+                {
+                  header: "Estado",
+                  accessor: "estado",
+                  type: "progress",
+                },
+              ]}
               rows={[
                 {
+                  id: "procesador",
                   componente: "Procesador",
                   especificacion: "AMD Ryzen 9 7950X",
                   estado: 85,
                 },
                 {
+                  id: "memoria",
                   componente: "Memoria",
                   especificacion: "128GB DDR5 6000MHz",
                   estado: 60,
                 },
                 {
+                  id: "almacenamiento",
                   componente: "Almacenamiento",
                   especificacion: "2TB NVMe Gen5 SSD",
                   estado: 45,

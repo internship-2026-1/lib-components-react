@@ -1,52 +1,107 @@
-import React from "react";
+import React from 'react'
+
+type ProgressCellValue = string | number | React.ReactNode
+
+export interface ProgressTableColumn {
+  header: string
+  accessor: string
+  type?: 'text' | 'progress'
+}
 
 export interface ProgressTableRow {
-  componente: string;
-  especificacion: string;
-  estado: number;
+  id?: string | number
+  [key: string]: ProgressCellValue | undefined
 }
 
 export interface SpecificationRow {
-  label: string;
-  value: string;
+  label: string
+  value: string
 }
 
 export interface SpecificationSection {
-  title: string;
-  icon?: React.ReactNode;
-  rows: SpecificationRow[];
+  title: string
+  icon?: React.ReactNode
+  rows: SpecificationRow[]
 }
 
 export interface SimpleTableRow {
-  label: string;
-  value: string;
+  label: string
+  value: string
 }
 
 export type Table2Props =
   | {
-      variant: "progress";
-      title?: string;
-      col1?: string;
-      col2?: string;
-      col3?: string;
-      rows: ProgressTableRow[];
+      variant: 'progress'
+      title?: string
+      columns: ProgressTableColumn[]
+      rows: ProgressTableRow[]
+      rowKey?: string
     }
   | {
-      variant: "specifications";
-      title?: string;
-      sections: SpecificationSection[];
+      variant: 'specifications'
+      title?: string
+      sections: SpecificationSection[]
     }
   | {
-      variant: "simple";
-      title?: string;
-      rows: SimpleTableRow[];
-    };
+      variant: 'simple'
+      title?: string
+      rows: SimpleTableRow[]
+    }
+
+const getProgressValue = (value: ProgressCellValue | undefined): number => {
+  if (typeof value === 'number') {
+    return Math.max(0, Math.min(100, value))
+  }
+
+  if (typeof value === 'string') {
+    const parsedValue = Number(value)
+
+    if (!Number.isNaN(parsedValue)) {
+      return Math.max(0, Math.min(100, parsedValue))
+    }
+  }
+
+  return 0
+}
+
+const getRowKey = (
+  row: ProgressTableRow,
+  index: number,
+  rowKey?: string
+): string | number => {
+  if (rowKey && row[rowKey] !== undefined) {
+    const keyValue = row[rowKey]
+
+    if (typeof keyValue === 'string' || typeof keyValue === 'number') {
+      return keyValue
+    }
+  }
+
+  if (row.id !== undefined) {
+    return row.id
+  }
+
+  return index
+}
 
 export const Table2: React.FC<Table2Props> = (props) => {
-  if (props.variant === "progress" && !props.rows?.length) {
-    return <div className="lc-table-empty">No hay datos para mostrar.</div>;
-  }
-  if (props.variant === "progress") {
+  if (props.variant === 'progress') {
+    if (!props.columns?.length) {
+      return (
+        <div className="lc-table-empty">
+          No hay columnas para mostrar.
+        </div>
+      )
+    }
+
+    if (!props.rows?.length) {
+      return (
+        <div className="lc-table-empty">
+          No hay datos para mostrar.
+        </div>
+      )
+    }
+
     return (
       <div className="lc-table-container">
         {props.title && <h2 className="lc-table-title">{props.title}</h2>}
@@ -54,59 +109,89 @@ export const Table2: React.FC<Table2Props> = (props) => {
         <table className="lc-table">
           <thead>
             <tr>
-              <th>{props.col1}</th>
-              <th>{props.col2}</th>
-              <th>{props.col3}</th>
+              {props.columns.map((column) => (
+                <th key={column.accessor}>
+                  {column.header}
+                </th>
+              ))}
             </tr>
           </thead>
 
           <tbody>
-            {props.rows.map((row, index) => (
-              <tr key={index}>
-                <td>{row.componente}</td>
-                <td>{row.especificacion}</td>
-                <td>
-                  <div className="lc-progress">
-                    <div
-                      className="lc-progress-bar"
-                      style={{ width: `${row.estado}%` }}
-                    />
-                  </div>
-                </td>
+            {props.rows.map((row, rowIndex) => (
+              <tr key={getRowKey(row, rowIndex, props.rowKey)}>
+                {props.columns.map((column) => {
+                  const cellValue = row[column.accessor]
+
+                  if (column.type === 'progress') {
+                    const progressValue = getProgressValue(cellValue)
+
+                    return (
+                      <td key={column.accessor}>
+                        <div className="lc-progress">
+                          <div
+                            className="lc-progress-bar"
+                            style={{ width: `${progressValue}%` }}
+                          />
+                        </div>
+                      </td>
+                    )
+                  }
+
+                  return (
+                    <td key={column.accessor}>
+                      {cellValue ?? ''}
+                    </td>
+                  )
+                })}
               </tr>
             ))}
           </tbody>
         </table>
       </div>
-    );
+    )
   }
 
-  if (props.variant === "simple" && !props.rows?.length) {
-    return <div className="lc-table-empty">No hay datos para mostrar.</div>;
-  }
+  if (props.variant === 'simple') {
+    if (!props.rows?.length) {
+      return (
+        <div className="lc-table-empty">
+          No hay datos para mostrar.
+        </div>
+      )
+    }
 
-  if (props.variant === "simple") {
     return (
       <section className="lc-simple-table-container">
         {props.title && (
-          <h2 className="lc-simple-table-title">{props.title}</h2>
+          <h2 className="lc-simple-table-title">
+            {props.title}
+          </h2>
         )}
 
         <div className="lc-simple-table">
           {props.rows.map((row, index) => (
             <div className="lc-simple-table-row" key={index}>
-              <div className="lc-simple-table-label">{row.label}</div>
+              <div className="lc-simple-table-label">
+                {row.label}
+              </div>
 
-              <div className="lc-simple-table-value">{row.value}</div>
+              <div className="lc-simple-table-value">
+                {row.value}
+              </div>
             </div>
           ))}
         </div>
       </section>
-    );
+    )
   }
 
-  if (props.variant === "specifications" && !props.sections?.length) {
-    return <div className="lc-table-empty">No hay secciones para mostrar.</div>;
+  if (!props.sections?.length) {
+    return (
+      <div className="lc-table-empty">
+        No hay secciones para mostrar.
+      </div>
+    )
   }
 
   return (
@@ -118,10 +203,14 @@ export const Table2: React.FC<Table2Props> = (props) => {
           <div className="lc-specs-section" key={sectionIndex}>
             <div className="lc-specs-section-header">
               {section.icon && (
-                <span className="lc-specs-icon">{section.icon}</span>
+                <span className="lc-specs-icon">
+                  {section.icon}
+                </span>
               )}
 
-              <h3 className="lc-specs-section-title">{section.title}</h3>
+              <h3 className="lc-specs-section-title">
+                {section.title}
+              </h3>
             </div>
 
             <div className="lc-specs-title-line" />
@@ -129,9 +218,13 @@ export const Table2: React.FC<Table2Props> = (props) => {
             <div className="lc-specs-list">
               {section.rows.map((row, rowIndex) => (
                 <div className="lc-specs-row" key={rowIndex}>
-                  <div className="lc-specs-label">{row.label}</div>
+                  <div className="lc-specs-label">
+                    {row.label}
+                  </div>
 
-                  <div className="lc-specs-value">{row.value}</div>
+                  <div className="lc-specs-value">
+                    {row.value}
+                  </div>
                 </div>
               ))}
             </div>
@@ -139,7 +232,7 @@ export const Table2: React.FC<Table2Props> = (props) => {
         ))}
       </div>
     </section>
-  );
-};
+  )
+}
 
-Table2.displayName = "Table2";
+Table2.displayName = 'Table2'
