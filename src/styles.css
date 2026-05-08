@@ -1,17 +1,24 @@
+@import url("https://cdn.jsdelivr.net/npm/geist@1.3.1/dist/fonts/geist-sans/style.css");
+@import url("https://cdn.jsdelivr.net/npm/geist@1.3.1/dist/fonts/geist-mono/style.css");
 /* Basic CSS for the component library (no Tailwind) */
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap');
+
 :root{
   --bg: #ffffff;
-  --text: #0f172a;
-  --muted: #6b7280;
+  --text: #191C1E;
+  --muted: #565E74;
   --border: #e6e8eb;
-  --accent: #0ea5e9;
-  --danger: #dc2626;
+  --accent: #0056C3;
+  --container: #256FE7;
+  --surface: #ECEEF0;
+  --danger: #BA1A1A;
+  --on-surface: #191C1E;
 }
 
 *{box-sizing:border-box}
-body{margin:0;font-family:Inter,ui-sans-serif,system-ui,Segoe UI,Roboto,'Helvetica Neue',Arial}
+body{margin:0;font-family:'Manrope',ui-sans-serif,system-ui,'Segoe UI',Roboto,'Helvetica Neue',Arial}
 
-.lc-button{display:inline-flex;align-items:center;justify-content:center;border-radius:6px;padding:8px 12px;font-size:14px;font-weight:500;border:1px solid var(--border);background:var(--accent);color:white;cursor:pointer}
+.lc-button{display:inline-flex;align-items:center;justify-content:center;border-radius:6px;padding:8px 12px;font-size:14px;font-weight:700;letter-spacing:0.05em;border:none;background:var(--on-surface);color:white;cursor:pointer;font-family:'Manrope',sans-serif}
 .lc-button.ghost{background:transparent;color:var(--text);border:1px solid transparent}
 .lc-button:disabled{opacity:0.6;cursor:not-allowed}
 
@@ -27,3 +34,443 @@ body{margin:0;font-family:Inter,ui-sans-serif,system-ui,Segoe UI,Roboto,'Helveti
 .component-item{padding:8px;border-radius:6px;cursor:pointer}
 .component-item:hover{background:#f5f7fa}
 .component-item.active{background:#eef6fb}
+
+<<<<<<< HEAD
+/* El contenedor: ahora es invisible, solo sirve para agrupar */
+.lc-radio-card {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  background: transparent; /* Quitamos el fondo blanco */
+  border: none;             /* Quitamos el borde del recuadro */
+  padding: 4px;             /* Un pequeño espacio para que sea fácil de clickear */
+  margin-right: 8px;
+  transition: transform 0.1s ease;
+}
+
+/* Efecto opcional: que el círculo crezca un poco al pasar el mouse */
+.lc-radio-card:hover {
+  transform: scale(1.05);
+}
+
+/* Ocultamos el input real */
+.lc-radio-card input {
+  display: none;
+}
+
+/* El círculo exterior (el que siempre se ve) */
+.radio-circle {
+  width: 20px;
+  height: 20px;
+  border: 2px solid #d1d5db; /* Gris cuando no está seleccionado */
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+}
+
+/* Cuando está seleccionado: el círculo exterior cambia a azul */
+.is-checked .radio-circle {
+  border-color: #0052cc;
+}
+
+/* El punto interno (el check) */
+.radio-circle::after {
+  content: '';
+  width: 10px;
+  height: 10px;
+  background: #0052cc;
+  border-radius: 50%;
+  transform: scale(0);
+  transition: transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+/* Mostrar el punto azul al seleccionar */
+.is-checked .radio-circle::after {
+  transform: scale(1);
+}
+/* Card Components */
+.lc-card{display:flex;flex-direction:column;background:var(--bg);border:1px solid var(--border);border-radius:12px;overflow:hidden;box-shadow:0 1px 3px rgba(0,0,0,0.08);transition:box-shadow 0.2s ease}
+.lc-card:hover{box-shadow:0 4px 16px rgba(0,0,0,0.12)}
+
+.lc-card-image{width:100%;height:220px;overflow:hidden;background:#f5f5f5;position:relative}
+.lc-card-image img{width:100%;height:100%;object-fit:cover}
+
+/* Badge sits on top of the image */
+.lc-card-badge{position:absolute;top:12px;right:12px;display:inline-block;background:var(--accent);color:white;font-size:12px;font-weight:700;padding:4px 10px;border-radius:6px;letter-spacing:0.04em;z-index:1}
+
+.lc-card-content{flex:1;padding:20px;display:flex;flex-direction:column;gap:10px}
+
+.lc-card-title{margin:0;font-size:22px;font-weight:800;color:var(--text);line-height:1.2}
+
+.lc-card-description{margin:0;font-size:15px;color:var(--muted);line-height:1.6}
+
+/* Tags/chips row */
+.lc-card-tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:2px}
+.lc-card-tag{display:inline-block;background:var(--surface);color:var(--text);font-size:13px;font-weight:500;padding:4px 12px;border-radius:20px;border:1px solid var(--border)}
+
+.lc-card-footer{padding:16px 20px;display:flex;gap:8px}
+.lc-card-footer .lc-button{width:100%;justify-content:center;padding:14px;font-size:13px;border-radius:8px}
+
+/* Card Grid */
+.lc-grid{display:grid;grid-template-columns:repeat(var(--grid-columns, 3), 1fr);gap:var(--grid-gap, 20px);width:100%}
+
+@media (max-width: 1024px){
+  .lc-grid{grid-template-columns:repeat(var(--grid-columns-lg, 2), 1fr)}
+}
+
+@media (max-width: 768px){
+  .lc-grid{grid-template-columns:1fr}
+}
+
+/* Promo Card */
+.lc-promo-card{display:flex;flex-direction:column;justify-content:space-between;padding:28px 32px;border-radius:12px;color:white;position:relative;overflow:hidden;min-height:160px}
+
+.lc-promo-card-content{z-index:2;position:relative}
+
+.lc-promo-card-title{margin:0 0 10px 0;font-size:26px;font-weight:800;line-height:1.2}
+
+.lc-promo-card-description{margin:0;font-size:15px;opacity:0.85;line-height:1.6}
+
+/* Tag icon bottom-right */
+.lc-promo-card-icon{position:absolute;bottom:20px;right:24px;opacity:0.35;z-index:1}
+.lc-promo-card-icon svg{width:44px;height:44px;fill:none;stroke:white;stroke-width:1.5}
+
+/* Info Card */
+.lc-info-card{display:flex;gap:20px;padding:24px 28px;background:var(--surface);border:none;border-radius:12px;align-items:center}
+
+.lc-info-card-icon{flex-shrink:0;width:36px;height:36px;display:flex;align-items:center;justify-content:center;font-size:22px;color:var(--accent)}
+
+.lc-info-card-content{flex:1}
+
+.lc-info-card-title{margin:0 0 2px 0;font-size:15px;font-weight:700;color:var(--text)}
+
+.lc-info-card-description{margin:0;font-size:13px;color:var(--muted);line-height:1.4}
+
+/*------ Diseno Typography -----------*/
+.typography {
+  font-family: "Geist", sans-serif;
+  color: #191C1E;
+  margin: 0;
+}
+
+/* DisplayLarge = Geist Sans Extra bold */
+.typography--display-large {
+  font-size: 48px;
+  font-weight: 800;
+  line-height: 52.8px;
+  letter-spacing: -0.96px;
+}
+
+/* HeadlineLarge = Geist Sans Bold */
+.typography--headline-large {
+  font-size: 32px;
+  font-weight: 700;
+  line-height: 38.4px;
+  letter-spacing: -0.32px;
+}
+
+/* HeadlineMedium = Geist Sans semi bold */
+.typography--headline-medium {
+  font-size: 24px;
+  font-weight: 600;
+  line-height: 31.2px;
+  letter-spacing: 0;
+}
+
+/* BodyLarge = Geist Sans regular */
+.typography--body-large {
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 28.8px;
+  letter-spacing: 0;
+}
+
+/* LabelLarge = Geist Sans semi bold */
+.typography--label-large {
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 16.8px;
+  letter-spacing: 0.28px;
+}
+
+/* Code = Geist Mono regular*/
+.typography--code {
+  font-family: "Geist Mono", monospace;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 19.6px;
+  letter-spacing: 0;
+}
+
+/*adicional panel*/
+.typography-column {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  align-items: flex-start;
+}
+
+.typography-column .panel {
+  width: 650px;
+  max-width: 100%;
+  padding: 12px 16px;
+  border: 1px solid #E6E8EB;
+  border-radius: 8px;
+  background-color: #FFFFFF;
+}
+
+/* estilos table 2 - especificaciones */
+.lc-table-container {
+  width: 100%;
+  padding: 8px;
+}
+
+.lc-table-title {
+  margin: 0 0 12px 0;
+  font-size: 18px;
+  font-weight: 500;
+  color: #191c1E;
+}
+
+.lc-table {
+  width: 100%;
+  border-collapse: collapse;
+  background: #ffffff;
+  border: 1px solid #d1d5db;
+  font-size: 13px;
+}
+
+.lc-table th {
+  background: #ECEEF0;
+  color: #191c1E;
+  font-weight: 500;
+  text-align: left;
+  padding: 8px 12px;
+  border-bottom: 1px solid #d1d5db;
+}
+
+.lc-table td {
+  padding: 9px 12px;
+  border-bottom: 1px solid #d1d5db;
+  color: #191c1E;
+}
+
+.lc-progress {
+  width: 170px;
+  height: 6px;
+  background: #e5e7eb;
+  border-radius: 999px;
+  overflow: hidden;
+}
+
+.lc-progress-bar {
+  height: 100%;
+  background: #0066cc;
+  border-radius: 999px;
+}
+
+.lc-specs-container {
+  width: 100%;
+  padding: 4px;
+  color: #191c1e;
+}
+
+.lc-specs-main-title {
+  margin: 0 0 34px 0;
+  font-size: 34px;
+  font-weight: 700;
+  color: #191c1e;
+}
+
+.lc-specs-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 56px;
+}
+
+.lc-specs-section {
+  width: 100%;
+}
+
+.lc-specs-section-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.lc-specs-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: #0066cc;
+}
+
+.lc-specs-icon svg {
+  width: 24px;
+  height: 24px;
+}
+
+.lc-specs-section-title {
+  margin: 0;
+  font-size: 26px;
+  font-weight: 600;
+  color: #191c1e;
+}
+
+.lc-specs-title-line {
+  width: 175px;
+  height: 3px;
+  margin-top: 6px;
+  margin-bottom: 26px;
+  background: #0066cc;
+}
+
+.lc-specs-list {
+  width: 100%;
+}
+
+.lc-specs-row {
+  display: grid;
+  grid-template-columns: 180px 1fr;
+  gap: 8px;
+  padding: 16px 0;
+  border-bottom: 1px solid #cfd5dd;
+}
+
+.lc-specs-label {
+  font-size: 12px;
+  font-weight: 500;
+  color: #4b5563;
+  text-transform: uppercase;
+}
+
+.lc-specs-value {
+  font-size: 16px;
+  font-weight: 400;
+  color: #24272b;
+  line-height: 1.5;
+}
+
+@media (max-width: 900px) {
+  .lc-specs-grid {
+    grid-template-columns: 1fr;
+    gap: 36px;
+  }
+
+  .lc-specs-row {
+    grid-template-columns: 1fr;
+    gap: 6px;
+  }
+
+  .lc-specs-main-title {
+    font-size: 28px;
+  }
+
+  .lc-specs-section-title {
+    font-size: 22px;
+  }
+}
+
+
+/*Especifiaciones tecnicas 3*/
+.lc-simple-table-container {
+  width: 100%;
+  color: #24272b;
+}
+
+.lc-simple-table-title {
+  margin: 0 0 18px 0;
+  font-size: 16px;
+  font-weight: 400;
+  color: #24272b;
+}
+
+.lc-simple-table {
+  width: 100%;
+  border: 1px solid #b8c3d4;
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.lc-simple-table-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  min-height: 56px;
+  border-bottom: 1px solid #b8c3d4;
+}
+
+.lc-simple-table-row:last-child {
+  border-bottom: none;
+}
+
+.lc-simple-table-label {
+  display: flex;
+  align-items: center;
+  padding: 0 16px;
+  font-size: 16px;
+  font-weight: 400;
+  color: #374151;
+}
+
+.lc-simple-table-value {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  padding: 0 16px;
+  font-size: 16px;
+  font-weight: 400;
+  color: #24272b;
+  text-align: right;
+}
+
+@media (max-width: 700px) {
+  .lc-simple-table-row {
+    grid-template-columns: 1fr;
+    gap: 6px;
+    padding: 12px 16px;
+  }
+
+  .lc-simple-table-label,
+  .lc-simple-table-value {
+    padding: 0;
+  }
+
+  .lc-simple-table-value {
+    justify-content: flex-start;
+    text-align: left;
+  }
+}
+=======
+
+.table-root {width: 100%;border: 1px solid #e5e7eb;border-radius: 10px;overflow: hidden;background: white;}
+.table {width: 100%;border-collapse: collapse;font-size: 14px;}
+.table thead {background: #f9fafb;text-align: left;}
+.table th {padding: 12px;color: #6b7280;font-weight: 500;}
+.table td {padding: 12px;border-top: 1px solid #f1f5f9;}
+.table tr:hover {background: #f9fafb;}
+.table-empty {text-align: center;padding: 20px;color: #9ca3af;}
+
+.action-btn {border: none;background: transparent;cursor: pointer;font-size: 16px;padding: 4px;border-radius: 6px;display: inline-flex;align-items: center;justify-content: center;}
+.action-btn:hover {background: #f1f5f9;}
+.action-btn.edit {color: #3b82f6;}
+.action-btn.delete {color: #ef4444;}
+.action-btn:disabled {opacity: 0.4;cursor: not-allowed;}
+
+.table-footer {padding: 16px 12px;border-top: 1px solid #e5e7eb;background: #f9fafb;display: flex;justify-content: flex-end;}
+.pagination {display: flex;align-items: center;gap: 12px;flex-wrap: wrap;justify-content: center;}
+.pagination-btn {padding: 6px 12px;border: 1px solid #e5e7eb;background: white;border-radius: 6px;cursor: pointer;font-size: 13px;font-weight: 500;color: #374151;transition: all 0.2s;}
+.pagination-btn:hover:not(:disabled) {background: #f3f4f6;border-color: #d1d5db;}
+.pagination-btn:disabled {opacity: 0.5;cursor: not-allowed;}
+
+.pagination-numbers {display: flex;gap: 4px;align-items: center;}
+.pagination-number {min-width: 32px;height: 32px;padding: 0;border: 1px solid #e5e7eb;background: white;border-radius: 6px;cursor: pointer;font-size: 13px;font-weight: 500;color: #374151;transition: all 0.2s;}
+.pagination-number:hover:not(:disabled) {border-color: #d1d5db;background: #f3f4f6;}
+.pagination-number.active {background: #0ea5e9;color: white;border-color: #0ea5e9;}
+.pagination-number.ellipsis {border: none;cursor: default;background: transparent;color: #9ca3af;}
+.pagination-number:disabled {cursor: default;}
+
+.pagination-info {font-size: 13px;color: #6b7280;margin-left: 8px;}
+>>>>>>> feature/componente-tabla-luis
