@@ -9,3 +9,12 @@ export { CardGrid } from './ui/CardGrid'
 export { PromoCard } from './ui/PromoCard'
 export { InfoCard } from './ui/InfoCard'
 export { Text } from "./ui/Typography"
+export { Table2 } from "./ui/Table2";
+export type {
+  Table2Props,
+  ProgressTableColumn,
+  ProgressTableRow,
+  SpecificationRow,
+  SpecificationSection,
+  SimpleTableRow,
+} from "./ui/Table2";
