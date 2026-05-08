@@ -5,6 +5,11 @@ import Sumador from '../../src/ui/Sumador'
 type ComponentKey = 'Button' | 'Input' | 'Textarea' | 'Select' | 'Sumador'
 
 const components: ComponentKey[] = ['Button', 'Input', 'Textarea', 'Select', 'Sumador']
+import { Input, Button, FormField, Textarea, Select, Text } from 'lib'
+
+type ComponentKey = 'Button' | 'Input' | 'Textarea' | 'Select' | 'Typography'
+
+const components: ComponentKey[] = ['Button', 'Input', 'Textarea', 'Select', 'Typography']
 
 export default function App() {
   const [selected, setSelected] = useState<ComponentKey>('Button')
@@ -126,12 +131,49 @@ export default function App() {
             <div className="state-row">
               <div className="panel">
                 <Sumador value={cantidad} onChange={setCantidad} min={1} max={10} />
+      case 'Typography':
+        return(
+          <div>
+            <h2>Typography</h2>
+            <div className="typography-column">
+              <div className="panel">
+                <Text variant='DisplayLarge'>
+                  Ingenieria de precision
+                </Text>
+              </div>
+
+              <div className='panel'>
+                <Text variant='HeadlineLarge'>
+                  Rendimiento de limites
+                </Text>
+              </div>
+
+              <div className='panel'>
+                <Text variant='HeadlineMedium'>
+                  Especificaciones tecnicas
+                </Text>
+              </div>
+              <div className='panel'>
+                <Text variant='BodyLarge'>
+                  Diseñado para entusiastas y profesionales que valoran la calidad de construcción y los detalles técnicos.
+                </Text>
+              </div>
+              <div className='panel'>
+                <Text variant='LabelLarge'>
+                  CONFIGURAR AHORA
+                </Text>
+              </div>
+              <div className='panel'>
+                <Text variant='code'>
+                  npm install @techspec/core
+                </Text>
               </div>
             </div>
           </div>
         )
 
       default:
+
         return null
     }
   }

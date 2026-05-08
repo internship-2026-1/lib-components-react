@@ -21,8 +21,12 @@ Diseño y compatibilidad
 - Los componentes usan Tailwind por defecto. Pueden adaptarse a las clases de shadcn (componentes estilados con utilidades de Tailwind) cambiando las clases en `src/ui`.
 - Los inputs usan forwardRef para integrarse con `react-hook-form`.
 
+# Lib Typography
+1. instalar depencias geist sans
+npm install geist
 
-# IMPORTAR COMPONENTE
+
+# IMPORTAR COMPONENTE SUMADOR
 import Sumador from '../../src/ui/Sumador'
 
 # COMO USARLO
@@ -47,4 +51,5 @@ case 'Sumador':
 -onChange
 -min
 -max
+
 
