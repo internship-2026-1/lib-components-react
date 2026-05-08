@@ -105,7 +105,6 @@ export default function App() {
         return (
           <div>
             <h2>RadioButton</h2>
-          <>
           <RadioButton 
             value="std"
             checked={value === 'std'}
@@ -116,13 +115,6 @@ export default function App() {
             checked={value === 'exp'}
             onChange={(e) => setValue(e.target.value)}
           />
-          <RadioButton 
-  value="expi"
-  checked={value === 'expi'}
-  onChange={(e) => setValue(e.target.value)}
-/>
-        </>
-
           </div>
         )
 
