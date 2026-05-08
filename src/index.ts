@@ -7,3 +7,4 @@ export { Card } from './ui/Card'
 export { CardGrid } from './ui/CardGrid'
 export { PromoCard } from './ui/PromoCard'
 export { InfoCard } from './ui/InfoCard'
+export { Text } from "./ui/Typography"

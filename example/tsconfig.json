@@ -2,10 +2,18 @@
   "extends": "../tsconfig.json",
   "compilerOptions": {
     "baseUrl": ".",
+    "rootDir": "..",
+    "noEmit": true,
+    "declaration": false,
+    "declarationDir": null,
+    "outDir": null,
+    "ignoreDeprecations": "6.0", 
+    "types": ["node"],   
     "paths": {
       "lib": ["../src"],
       "lib/*": ["../src/*"]
     }
   },
-  "include": ["src"]
+  "include": ["./src", "../src"],
+  "exclude": ["../node_modules"]
 }

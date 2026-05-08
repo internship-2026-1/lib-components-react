@@ -12,7 +12,7 @@ npm run dev
 ## Importación
 
 ```jsx
-import { Card, CardGrid, PromoCard, InfoCard, Button } from 'lib-components-react'
+import { Card, CardGrid, PromoCard, InfoCard, Button, Text } from 'lib-components-react'
 import 'lib-components-react/styles.css'
 ```
 
@@ -158,3 +158,22 @@ Sobrescríbelas en tu propio CSS para cambiar el tema globalmente.
 ---
 
 > Para documentación detallada con más ejemplos ver `CARDS_GUIDE.md`.
+
+---
+
+## Componente Text (Typography)
+
+Componente de tipografía con variantes predefinidas usando la fuente Geist.
+
+```jsx
+import { Text } from 'lib-components-react'
+
+<Text variant="DisplayLarge">Ingeniería de Precisión</Text>
+<Text variant="HeadlineLarge">Rendimiento sin límites</Text>
+<Text variant="HeadlineMedium">Especificaciones Técnicas</Text>
+<Text variant="BodyLarge">Descripción del producto.</Text>
+<Text variant="LabelLarge">CONFIGURAR AHORA</Text>
+<Text variant="code">npm install @techspec/core</Text>
+```
+
+Instalar fuente Geist: `npm install geist`
