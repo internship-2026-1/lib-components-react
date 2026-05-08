@@ -1,14 +1,16 @@
 import React, { useState } from 'react'
 import { Input, Button, FormField, Textarea, Select } from 'lib'
+import Sumador from '../../src/ui/Sumador'
 
-type ComponentKey = 'Button' | 'Input' | 'Textarea' | 'Select'
+type ComponentKey = 'Button' | 'Input' | 'Textarea' | 'Select' | 'Sumador'
 
-const components: ComponentKey[] = ['Button', 'Input', 'Textarea', 'Select']
+const components: ComponentKey[] = ['Button', 'Input', 'Textarea', 'Select', 'Sumador']
 
 export default function App() {
   const [selected, setSelected] = useState<ComponentKey>('Button')
   const [value, setValue] = useState('')
   const [error, setError] = useState<string | null>(null)
+  const [cantidad, setCantidad] = useState(1)
 
   function renderPanel() {
     switch (selected) {
@@ -37,7 +39,12 @@ export default function App() {
             <div className="state-row">
               <div className="panel">
                 <FormField label="Name">
-                  <Input value={value} onChange={(e) => setValue((e.target as HTMLInputElement).value)} />
+                  <Input
+                    value={value}
+                    onChange={(e) =>
+                      setValue((e.target as HTMLInputElement).value)
+                    }
+                  />
                 </FormField>
               </div>
               <div className="panel">
@@ -47,10 +54,21 @@ export default function App() {
               </div>
               <div className="panel">
                 <FormField label="Error" error={error}>
-                  <Input value={value} onChange={(e) => setValue((e.target as HTMLInputElement).value)} />
+                  <Input
+                    value={value}
+                    onChange={(e) =>
+                      setValue((e.target as HTMLInputElement).value)
+                    }
+                  />
                 </FormField>
-                <div style={{marginTop:8}}>
-                  <Button onClick={() => setError(error ? null : 'This field is required')}>Toggle Error</Button>
+                <div style={{ marginTop: 8 }}>
+                  <Button
+                    onClick={() =>
+                      setError(error ? null : 'This field is required')
+                    }
+                  >
+                    Toggle Error
+                  </Button>
                 </div>
               </div>
             </div>
@@ -101,6 +119,18 @@ export default function App() {
           </div>
         )
 
+      case 'Sumador':
+        return (
+          <div>
+            <h2>Sumador</h2>
+            <div className="state-row">
+              <div className="panel">
+                <Sumador value={cantidad} onChange={setCantidad} min={1} max={10} />
+              </div>
+            </div>
+          </div>
+        )
+
       default:
         return null
     }
@@ -113,7 +143,9 @@ export default function App() {
         {components.map((c) => (
           <div
             key={c}
-            className={`component-item ${selected === c ? 'active' : ''}`}
+            className={`component-item ${
+              selected === c ? 'active' : ''
+            }`}
             onClick={() => setSelected(c)}
           >
             {c}
