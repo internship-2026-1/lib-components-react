@@ -35,7 +35,6 @@ body{margin:0;font-family:'Manrope',ui-sans-serif,system-ui,'Segoe UI',Roboto,'H
 .component-item:hover{background:#f5f7fa}
 .component-item.active{background:#eef6fb}
 
-<<<<<<< HEAD
 /* El contenedor: ahora es invisible, solo sirve para agrupar */
 .lc-radio-card {
   display: inline-flex;
@@ -443,7 +442,6 @@ body{margin:0;font-family:'Manrope',ui-sans-serif,system-ui,'Segoe UI',Roboto,'H
     text-align: left;
   }
 }
-=======
 
 .table-root {width: 100%;border: 1px solid #e5e7eb;border-radius: 10px;overflow: hidden;background: white;}
 .table {width: 100%;border-collapse: collapse;font-size: 14px;}
@@ -473,4 +471,3 @@ body{margin:0;font-family:'Manrope',ui-sans-serif,system-ui,'Segoe UI',Roboto,'H
 .pagination-number:disabled {cursor: default;}
 
 .pagination-info {font-size: 13px;color: #6b7280;margin-left: 8px;}
->>>>>>> feature/componente-tabla-luis

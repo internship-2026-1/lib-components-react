@@ -13,7 +13,6 @@ npm run dev
 - Los componentes usan Tailwind por defecto. Pueden adaptarse a las clases de shadcn (componentes
 estilados con utilidades de Tailwind) cambiando las clases en `src/ui`.
 - Los inputs usan forwardRef para integrarse con `react-hook-form`.
-<<<<<<< HEAD
 ```jsx
 import { Card, CardGrid, PromoCard, InfoCard, Button, Text } from 'lib-components-react'
 import 'lib-components-react/styles.css'
@@ -584,10 +583,6 @@ function App() {
 
 export default App
 ```
-=======
-
-
-
 # Lib - Table
 
 Asegúrate de tener el componente `Table.tsx` y sus estilos en tu carpeta de componentes.
@@ -669,4 +664,3 @@ Botones de acciones
     )
   }
 }
->>>>>>> feature/componente-tabla-luis

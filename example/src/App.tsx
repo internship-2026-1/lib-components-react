@@ -1,23 +1,9 @@
 import React, { useState } from 'react'
-<<<<<<< HEAD
-import { Input, Button, FormField, Textarea, Select, Card, CardGrid, PromoCard, InfoCard, Text, RadioButton, Table2} from 'lib'
+import { Input, Button, FormField, Textarea, Select, Card, CardGrid, PromoCard, InfoCard, Text, RadioButton, Table, Table2 } from 'lib'
 
+type ComponentKey = 'Button' | 'Input' | 'Textarea' | 'Select' | 'RadioButton' | 'Cards' | 'Typography' | 'Table' | 'Table2'
 
-type ComponentKey = 'Button' | 'Input' | 'Textarea' | 'Select' | 'RadioButton' |  'Cards' | 'Typography' | "Table2";
-
-const components: ComponentKey[] = ['Button', 'Input', 'Textarea', 'Select', 'RadioButton','Cards', 'Typography', 'Table2'];
-
-
-export default function App() {
-  const [selected, setSelected] = useState<ComponentKey>("Button");
-  const [value, setValue] = useState("");
-  const [error, setError] = useState<string | null>(null);
-=======
-import {Input,Button,FormField,Textarea,Select,Table} from 'lib'
-
-type ComponentKey = 'Button' | 'Input' | 'Textarea' | 'Select' | 'Table'
-
-const components: ComponentKey[] = ['Button','Input','Textarea','Select','Table']
+const components: ComponentKey[] = ['Button', 'Input', 'Textarea', 'Select', 'RadioButton', 'Cards', 'Typography', 'Table', 'Table2']
 
 // SVG Icons
 const EditIcon = () => (
@@ -62,7 +48,6 @@ export default function App() {
 
   const [error, setError] =
     useState<string | null>(null)
->>>>>>> feature/componente-tabla-luis
 
   function renderPanel() {
     switch (selected) {
@@ -73,15 +58,12 @@ export default function App() {
 
             <div className="state-row">
               <div className="panel">
-<<<<<<< HEAD
                 <Button onClick={() => alert("clicked")}>Default</Button>
-=======
                 <Button
                   onClick={() => alert('clicked')}
                 >
                   Default
                 </Button>
->>>>>>> feature/componente-tabla-luis
               </div>
 
               <div className="panel">
@@ -109,17 +91,7 @@ export default function App() {
                 <FormField label="Name">
                   <Input
                     value={value}
-                    onChange={(e) =>
-<<<<<<< HEAD
-                      setValue((e.target as HTMLInputElement).value)
-=======
-                      setValue(
-                        (
-                          e.target as HTMLInputElement
-                        ).value
-                      )
->>>>>>> feature/componente-tabla-luis
-                    }
+                    onChange={(e) => setValue((e.target as HTMLInputElement).value)}
                   />
                 </FormField>
               </div>
@@ -134,20 +106,6 @@ export default function App() {
               </div>
 
               <div className="panel">
-<<<<<<< HEAD
-                <FormField label="Error" error={error}>
-                  <Input
-                    value={value}
-                    onChange={(e) =>
-                      setValue((e.target as HTMLInputElement).value)
-                    }
-                  />
-                </FormField>
-                <div style={{ marginTop: 8 }}>
-                  <Button
-                    onClick={() =>
-                      setError(error ? null : "This field is required")
-=======
                 <FormField
                   label="Error"
                   error={error}
@@ -172,7 +130,6 @@ export default function App() {
                           ? null
                           : 'This field is required'
                       )
->>>>>>> feature/componente-tabla-luis
                     }
                   >
                     Toggle Error
@@ -241,7 +198,6 @@ export default function App() {
           </div>
         )
 
-<<<<<<< HEAD
         case 'RadioButton':
         return (
           <div>
@@ -295,7 +251,39 @@ export default function App() {
                   description="Asistencia experta para tu configuración."
                 />
               </div>
-=======
+            </div>
+          </div>
+        )
+
+      case 'Typography':
+        return (
+          <div>
+            <h2>Typography</h2>
+            <div className="typography-column">
+              <div className="panel">
+                <Text variant="DisplayLarge">Ingeniería de Precisión</Text>
+              </div>
+              <div className="panel">
+                <Text variant="HeadlineLarge">Rendimiento sin límites</Text>
+              </div>
+              <div className="panel">
+                <Text variant="HeadlineMedium">Especificaciones Técnicas</Text>
+              </div>
+              <div className="panel">
+                <Text variant="BodyLarge">
+                  Diseñado para entusiastas y profesionales que valoran la calidad de construcción y los detalles técnicos.
+                </Text>
+              </div>
+              <div className="panel">
+                <Text variant="LabelLarge">CONFIGURAR AHORA</Text>
+              </div>
+              <div className="panel">
+                <Text variant="code">npm install @techspec/core</Text>
+              </div>
+            </div>
+          </div>
+        )
+
       case 'Table':
         const data = [
           {
@@ -361,8 +349,7 @@ export default function App() {
                   color:
                     row.status === 'Activo'
                       ? 'green'
-                      : row.status ===
-                        'Stock Bajo'
+                      : row.status === 'Stock Bajo'
                       ? 'red'
                       : 'gray'
                 }}
@@ -375,8 +362,7 @@ export default function App() {
             key: 'actions',
             header: 'ACCIONES',
             render: (row) => {
-              const isDisabled =
-                !row.isActive
+              const isDisabled = !row.isActive
 
               return (
                 <div
@@ -428,37 +414,6 @@ export default function App() {
                 columns={columns}
                 itemsPerPage={2}
               />
->>>>>>> feature/componente-tabla-luis
-            </div>
-          </div>
-        )
-
-<<<<<<< HEAD
-      case 'Typography':
-        return (
-          <div>
-            <h2>Typography</h2>
-            <div className="typography-column">
-              <div className="panel">
-                <Text variant="DisplayLarge">Ingeniería de Precisión</Text>
-              </div>
-              <div className="panel">
-                <Text variant="HeadlineLarge">Rendimiento sin límites</Text>
-              </div>
-              <div className="panel">
-                <Text variant="HeadlineMedium">Especificaciones Técnicas</Text>
-              </div>
-              <div className="panel">
-                <Text variant="BodyLarge">
-                  Diseñado para entusiastas y profesionales que valoran la calidad de construcción y los detalles técnicos.
-                </Text>
-              </div>
-              <div className="panel">
-                <Text variant="LabelLarge">CONFIGURAR AHORA</Text>
-              </div>
-              <div className="panel">
-                <Text variant="code">npm install @techspec/core</Text>
-              </div>
             </div>
           </div>
         )
@@ -603,8 +558,6 @@ export default function App() {
             />
           </div>
         );
-=======
->>>>>>> feature/componente-tabla-luis
       default:
         return null;
     }
@@ -618,15 +571,7 @@ export default function App() {
         {components.map((c) => (
           <div
             key={c}
-<<<<<<< HEAD
             className={`component-item ${selected === c ? "active" : ""}`}
-=======
-            className={`component-item ${
-              selected === c
-                ? 'active'
-                : ''
-            }`}
->>>>>>> feature/componente-tabla-luis
             onClick={() => setSelected(c)}
           >
             {c}
@@ -636,12 +581,7 @@ export default function App() {
 
       <main className="demo-content">{renderPanel()}</main>
     </div>
-<<<<<<< HEAD
   );
 }
 
 
-=======
-  )
-}
->>>>>>> feature/componente-tabla-luis
