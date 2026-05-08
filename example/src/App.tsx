@@ -1,9 +1,9 @@
 import React, { useState } from 'react'
-import { Input, Button, FormField, Textarea, Select } from 'lib'
+import { Input, Button, FormField, Textarea, Select, RadioButton } from 'lib'
 
-type ComponentKey = 'Button' | 'Input' | 'Textarea' | 'Select'
+type ComponentKey = 'Button' | 'Input' | 'Textarea' | 'Select' | 'RadioButton'
 
-const components: ComponentKey[] = ['Button', 'Input', 'Textarea', 'Select']
+const components: ComponentKey[] = ['Button', 'Input', 'Textarea', 'Select', 'RadioButton']
 
 export default function App() {
   const [selected, setSelected] = useState<ComponentKey>('Button')
@@ -101,6 +101,31 @@ export default function App() {
           </div>
         )
 
+        case 'RadioButton':
+        return (
+          <div>
+            <h2>RadioButton</h2>
+          <>
+          <RadioButton 
+            value="std"
+            checked={value === 'std'}
+            onChange={(e) => setValue(e.target.value)}
+          />
+          <RadioButton 
+            value="exp"
+            checked={value === 'exp'}
+            onChange={(e) => setValue(e.target.value)}
+          />
+          <RadioButton 
+  value="expi"
+  checked={value === 'expi'}
+  onChange={(e) => setValue(e.target.value)}
+/>
+        </>
+
+          </div>
+        )
+
       default:
         return null
     }
@@ -127,3 +152,5 @@ export default function App() {
     </div>
   )
 }
+
+

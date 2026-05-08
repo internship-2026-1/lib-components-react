@@ -27,3 +27,59 @@ body{margin:0;font-family:Inter,ui-sans-serif,system-ui,Segoe UI,Roboto,'Helveti
 .component-item{padding:8px;border-radius:6px;cursor:pointer}
 .component-item:hover{background:#f5f7fa}
 .component-item.active{background:#eef6fb}
+
+/* El contenedor: ahora es invisible, solo sirve para agrupar */
+.lc-radio-card {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  background: transparent; /* Quitamos el fondo blanco */
+  border: none;             /* Quitamos el borde del recuadro */
+  padding: 4px;             /* Un pequeño espacio para que sea fácil de clickear */
+  margin-right: 8px;
+  transition: transform 0.1s ease;
+}
+
+/* Efecto opcional: que el círculo crezca un poco al pasar el mouse */
+.lc-radio-card:hover {
+  transform: scale(1.05);
+}
+
+/* Ocultamos el input real */
+.lc-radio-card input {
+  display: none;
+}
+
+/* El círculo exterior (el que siempre se ve) */
+.radio-circle {
+  width: 20px;
+  height: 20px;
+  border: 2px solid #d1d5db; /* Gris cuando no está seleccionado */
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+}
+
+/* Cuando está seleccionado: el círculo exterior cambia a azul */
+.is-checked .radio-circle {
+  border-color: #0052cc;
+}
+
+/* El punto interno (el check) */
+.radio-circle::after {
+  content: '';
+  width: 10px;
+  height: 10px;
+  background: #0052cc;
+  border-radius: 50%;
+  transform: scale(0);
+  transition: transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+/* Mostrar el punto azul al seleccionar */
+.is-checked .radio-circle::after {
+  transform: scale(1);
+}
