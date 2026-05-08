@@ -28,6 +28,7 @@ import Sumador from '../../src/ui/Sumador'
 # COMO USARLO
 const [cantidad, setCantidad] = useState(1)
 
+```
 case 'Sumador':
         return (
           <div>
@@ -39,10 +40,11 @@ case 'Sumador':
             </div>
           </div>
         )
+```
 
 # QUÉ PROPS ACEPTA?
-value
-onChange
-min
-max
+-value
+-onChange
+-min
+-max
 
