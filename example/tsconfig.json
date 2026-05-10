@@ -1,6 +1,6 @@
 {
-  "extends": "../tsconfig.json",
-  "compilerOptions": {
+"extends": "../tsconfig.json",
+"compilerOptions": {
     "baseUrl": ".",
     "rootDir": "..",
     "noEmit": true,
@@ -10,10 +10,10 @@
     "ignoreDeprecations": "6.0", 
     "types": ["node"],   
     "paths": {
-      "lib": ["../src"],
-      "lib/*": ["../src/*"]
+    "lib": ["../src"],
+    "lib/*": ["../src/*"]
     }
-  },
-  "include": ["./src", "../src"],
-  "exclude": ["../node_modules"]
+},
+"include": ["./src", "../src"],
+"exclude": ["../node_modules"]
 }
