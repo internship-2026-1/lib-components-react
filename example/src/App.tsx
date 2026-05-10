@@ -1,15 +1,10 @@
 import React, { useState } from 'react'
-import { Input, Button, FormField, Textarea, Select } from 'lib'
+import { Input, Button, FormField, Textarea, Select, Text } from 'lib'
 import Sumador from '../../src/ui/Sumador'
 
-type ComponentKey = 'Button' | 'Input' | 'Textarea' | 'Select' | 'Sumador'
+type ComponentKey = 'Button' | 'Input' | 'Textarea' | 'Select' | 'Typography' | 'Sumador'
 
-const components: ComponentKey[] = ['Button', 'Input', 'Textarea', 'Select', 'Sumador']
-import { Input, Button, FormField, Textarea, Select, Text } from 'lib'
-
-type ComponentKey = 'Button' | 'Input' | 'Textarea' | 'Select' | 'Typography'
-
-const components: ComponentKey[] = ['Button', 'Input', 'Textarea', 'Select', 'Typography']
+const components: ComponentKey[] = ['Button', 'Input', 'Textarea', 'Select', 'Typography', 'Sumador']
 
 export default function App() {
   const [selected, setSelected] = useState<ComponentKey>('Button')
@@ -131,6 +126,11 @@ export default function App() {
             <div className="state-row">
               <div className="panel">
                 <Sumador value={cantidad} onChange={setCantidad} min={1} max={10} />
+              </div>
+            </div>
+          </div>
+        )
+        
       case 'Typography':
         return(
           <div>
