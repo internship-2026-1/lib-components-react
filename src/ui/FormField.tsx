@@ -1,24 +1,33 @@
-import React from 'react'
+import React from 'react';
+// @ts-ignore
+import '../styles.css';
 
 export interface FormFieldProps {
-  label?: string
-  name?: string
-  error?: string | null
-  children: React.ReactNode
+  name?: string;
+  label?: string;
+  error?: string | null;
+  children: React.ReactNode;
 }
 
-export const FormField: React.FC<FormFieldProps> = ({ label, name, error, children }) => {
+export const FormField: React.FC<FormFieldProps> = ({ name, label, error, children }) => {
   return (
-    <div className="flex flex-col gap-1">
-      {label && (
-        <label htmlFor={name} className="text-sm font-medium">
-          {label}
-        </label>
-      )}
-      {children}
-  {error && <p className="lc-error">{error}</p>}
-    </div>
-  )
-}
+    <div className="form-field" data-name={name}>
+      {
+        label && <label className="form-label">{label}</label>
+      }
 
-FormField.displayName = 'FormField'
+      {/* Espacio vacio */}
+      <div className="w-full">
+        {children}
+      </div>
+
+      {error && (
+        <span className="error-text">
+          {error}
+        </span>
+      )}
+    </div>
+  );
+};
+
+FormField.displayName = 'FormField';
