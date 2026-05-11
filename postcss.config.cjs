@@ -1,12 +1,6 @@
 module.exports = {
   plugins: {
-    '@tailwindcss/postcss': {},
-<<<<<<< HEAD
+    tailwindcss: {},
     autoprefixer: {},
   },
-  plugins: {}
-=======
-    autoprefixer: {}
-  }
->>>>>>> feature/componente-tabla-luis
 }

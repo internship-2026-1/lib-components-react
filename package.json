@@ -18,20 +18,14 @@
     "react-dom": "^18 || ^17"
   },
   "devDependencies": {
-<<<<<<< HEAD
     "@types/node": "^25.6.0",
-=======
-<<<<<<< HEAD
     "@types/node": "^25.6.0",
-=======
     "@tailwindcss/postcss": "^4.2.4",
->>>>>>> feature/componente-tabla-luis
->>>>>>> 0900aca2fcda757d016f306b51204d6b9d11a950
+
     "@types/react": "^18.0.0",
     "@types/react-dom": "^18.0.0",
     "@vitejs/plugin-react": "^4.0.0",
     "autoprefixer": "^10.5.0",
-<<<<<<< HEAD
     "react": "^18.0.0",
     "react-dom": "^18.0.0",
     "react-hook-form": "^7.0.0",
@@ -41,8 +35,6 @@
   },
   "dependencies": {
     "lucide-react": "^1.14.0"
-=======
-<<<<<<< HEAD
     "postcss": "^8.5.14",
     "react": "^18.0.0",
     "react-dom": "^18.0.0",
@@ -54,14 +46,12 @@
   },
   "dependencies": {
     "geist": "^1.7.0"
-=======
     "react": "^18.0.0",
     "react-dom": "^18.0.0",
     "react-hook-form": "^7.0.0",
     "tailwindcss": "^4.2.4",
     "typescript": "^5.0.0",
     "vite": "^5.0.0"
->>>>>>> feature/componente-tabla-luis
->>>>>>> 0900aca2fcda757d016f306b51204d6b9d11a950
+
   }
 }

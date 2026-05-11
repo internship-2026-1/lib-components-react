@@ -9,15 +9,81 @@ npm install
 npm run dev
 ```
 
+
+# Sumador Component
+
+Componente reutilizable para incrementar o decrementar valores numéricos dentro de un rango definido.
+
+## Características
+
+* Incrementa y decrementa valores.
+* Permite definir un valor mínimo y máximo.
+* Deshabilita automáticamente los botones cuando se alcanza el límite.
+---
+
+## Props
+
+| Prop       | Tipo                      | Descripción                    |
+| ---------- | ------------------------- | ------------------------------ |
+| `value`    | `number`                  | Valor actual del contador      |
+| `onChange` | `(value: number) => void` | Función que actualiza el valor |
+| `min`      | `number`                  | Valor mínimo permitido         |
+| `max`      | `number`                  | Valor máximo permitido         |
+
+---
+
+## Uso
+
+```tsx
+import { Sumador } from 'lib'
+import { useState } from 'react'
+
+export default function Example() {
+  const [cantidad, setCantidad] = useState(1)
+
+  return (
+    <Sumador
+      value={cantidad}
+      onChange={setCantidad}
+      min={1}
+      max={10}
+    />
+  )
+}
+```
+
+## Comportamiento
+
+* El botón `-` se deshabilita cuando el valor llega al mínimo.
+* El botón `+` se deshabilita cuando el valor llega al máximo.
+* El componente mantiene el valor dentro del rango permitido.
+
+---
+
+## Estilos
+
+El componente utiliza las clases:
+
+* `sumador`
+* `sumador-btn`
+* `sumador-value`
+
+Definidas en:
+
+```tsx
+src/styles.css
+```
+
+
+
 ## Importación
 - Los componentes usan Tailwind por defecto. Pueden adaptarse a las clases de shadcn (componentes
 estilados con utilidades de Tailwind) cambiando las clases en `src/ui`.
 - Los inputs usan forwardRef para integrarse con `react-hook-form`.
-<<<<<<< HEAD
 
 
 
-## 🚀 Características Principales
+##  Características Principales
 
 - **Alto Uniforme:** Consistencia visual garantizada con un `height` fijo de `40px` en todas las variantes.
 - **Sistema de Iconos Local:** Librería interna de SVGs optimizados que heredan el color del texto 
@@ -40,17 +106,14 @@ estilados con utilidades de Tailwind) cambiando las clases en `src/ui`.
       Enviar Mensaje
     </Button>
 
-=======
-<<<<<<< HEAD
 ```jsx
 import { Card, CardGrid, PromoCard, InfoCard, Button, Text } from 'lib-components-react'
 import 'lib-components-react/styles.css'
->>>>>>> 0900aca2fcda757d016f306b51204d6b9d11a950
+
 ```
 
 ---
 
-<<<<<<< HEAD
 ##  API del Componente (Props)
 
 
@@ -95,7 +158,6 @@ Los estilos están implementados como **objetos de JavaScript (Inline Styles)** 
 Para agregar nuevos iconos:
 1. Localiza el objeto `Icons` en `Button.tsx`.
 2. Añade el código SVG asegurándote de usar `stroke="currentColor"` para la herencia de color.
-=======
 ## Componentes de Cards
 
 ### Card
@@ -659,10 +721,6 @@ function App() {
 
 export default App
 ```
-=======
-
-
-
 # Lib - Table
 
 Asegúrate de tener el componente `Table.tsx` y sus estilos en tu carpeta de componentes.
@@ -744,5 +802,6 @@ Botones de acciones
     )
   }
 }
->>>>>>> feature/componente-tabla-luis
->>>>>>> 0900aca2fcda757d016f306b51204d6b9d11a950
+
+
+

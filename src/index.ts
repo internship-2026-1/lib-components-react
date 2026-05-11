@@ -3,14 +3,15 @@ export { Input } from './ui/Input'
 export { Textarea } from './ui/Textarea'
 export { Select } from './ui/Select'
 export { FormField } from './ui/FormField'
-<<<<<<< HEAD
-export { RadioButton } from  './ui/RadioButton'
+export { Text } from './ui/Typography'
+export { default as Sumador } from './ui/Sumador'
+export { RadioButton } from './ui/RadioButton'
 export { Card } from './ui/Card'
 export { CardGrid } from './ui/CardGrid'
 export { PromoCard } from './ui/PromoCard'
 export { InfoCard } from './ui/InfoCard'
-export { Text } from "./ui/Typography"
-export { Table2 } from "./ui/Table2";
+export { Table } from './ui/Table'
+export { Table2 } from './ui/Table2'
 export type {
   Table2Props,
   ProgressTableColumn,
@@ -18,7 +19,4 @@ export type {
   SpecificationRow,
   SpecificationSection,
   SimpleTableRow,
-} from "./ui/Table2";
-=======
-export { Table } from './ui/Table'
->>>>>>> feature/componente-tabla-luis
+} from './ui/Table2'
