@@ -1,34 +1,37 @@
-import React, { useState } from 'react'
-import useSearchBar, { SearchConfig } from './SearchBarHook'
+import React from 'react'
+import { Button } from './Button'
+import { Input } from './Input'
 
-const SearchBar = ({ config }: { config: SearchConfig }) => {
-  const [inputValue, setInputValue] = useState('')
-  const { results, loading, handleSearch } = useSearchBar(config)
+export interface SearchBarProps {
+  query: string
+  placeholder?: string
+  buttonText?: string
+  onQueryChange: (value: string) => void
+  onSearch: () => void
+}
 
+export default function SearchBar({
+  query,
+  placeholder = 'Buscar...',
+  buttonText = 'Buscar',
+  onQueryChange,
+  onSearch,
+}: SearchBarProps) {
   return (
     <div className="search-container">
       <div className="input-wrapper">
-        <span className="search-icon">🔍</span>
-        <input
-          type="text"
-          placeholder={config.placeholder}
-          value={inputValue}
-          onChange={(e) => setInputValue(e.target.value)}
+        <Input
+          value={query}
+          placeholder={placeholder}
+          onChange={(event) => onQueryChange(event.target.value)}
+          onKeyDown={(event) => {
+            if (event.key === 'Enter') {
+              onSearch()
+            }
+          }}
         />
-        <button onClick={() => handleSearch(inputValue)} disabled={loading}>
-          {loading ? 'Cargando...' : config.buttonText}
-        </button>
+        <Button onClick={onSearch}>{buttonText}</Button>
       </div>
-
-      {results.length > 0 && (
-        <ul className="results-list">
-          {results.map((item, i) => (
-            <li key={i}>{item[config.displayField] as string}</li>
-          ))}
-        </ul>
-      )}
     </div>
   )
 }
-
-export default SearchBar

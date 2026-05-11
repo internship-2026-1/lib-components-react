@@ -5,18 +5,77 @@ type ComponentKey = 'Button' | 'Input' | 'Textarea' | 'Select' | 'Typography' | 
 
 const components: ComponentKey[] = ['Button', 'Input', 'Textarea', 'Select', 'Typography', 'SearchBar']
 
-const searchConfig = {
-  url: 'https://fakestoreapi.com/products',
-  fields: ['title', 'category', 'description'],
-  displayField: 'title',
-  placeholder: 'Buscar en la tienda...',
-  buttonText: 'Search'
+// SearchBar: tipo de dato que usamos en la UI para guardar y renderizar resultados.
+type SearchResult = {
+  id: number
+  title: string
+  description: string
+}
+
+// SearchBar: tipo de dato que esperamos recibir desde la API.
+type ProductApiItem = {
+  id: number
+  title: string
+  description: string
 }
 
 export default function App() {
   const [selected, setSelected] = useState<ComponentKey>('Button')
   const [value, setValue] = useState('')
   const [error, setError] = useState<string | null>(null)
+
+  // SearchBar: estado para la busqueda y sus resultados.
+  const [searchQuery, setSearchQuery] = useState('')
+  const [searchResults, setSearchResults] = useState<SearchResult[]>([])
+  const [searchLoading, setSearchLoading] = useState(false)
+  const [searchError, setSearchError] = useState<string | null>(null)
+
+  // SearchBar: realiza la consulta y actualiza resultados o errores.
+  async function handleDemoSearch() {
+    const normalizedQuery = searchQuery.trim().toLowerCase()
+
+    setSearchError(null)
+
+    if (!normalizedQuery) {
+      setSearchResults([])
+      return
+    }
+
+    try {
+      setSearchLoading(true)
+
+      const response = await fetch('https://fakestoreapi.com/products')
+
+      if (!response.ok) {
+        throw new Error('La API no respondio correctamente.')
+      }
+
+      const products: ProductApiItem[] = await response.json()
+
+      setSearchResults(
+        products
+          .filter((item) => {
+            return [item.title, item.description].some((field) =>
+              field.toLowerCase().includes(normalizedQuery)
+            )
+          })
+          .map((item) => ({
+            id: item.id,
+            title: item.title,
+            description: item.description,
+          }))
+      )
+    } catch (searchRequestError) {
+      setSearchResults([])
+      setSearchError(
+        searchRequestError instanceof Error
+          ? searchRequestError.message
+          : 'Ocurrio un error inesperado.'
+      )
+    } finally {
+      setSearchLoading(false)
+    }
+  }
 
   function renderPanel() {
     switch (selected) {
@@ -150,11 +209,33 @@ export default function App() {
           </div>
         )
       case 'SearchBar':
+        // SearchBar: ejemplo de uso del componente dentro del panel.
         return (
           <div>
             <h2>SearchBar</h2>
             <div className="panel">
-              <SearchBar config={searchConfig} />
+              <SearchBar
+                query={searchQuery}
+                placeholder="Buscar producto en Fake Store API"
+                buttonText={searchLoading ? 'Buscando...' : 'Buscar'}
+                onQueryChange={setSearchQuery}
+                onSearch={() => {
+                  void handleDemoSearch()
+                }}
+              />
+              {searchResults.length === 0 ? (
+                <p className="lc-label">No hay resultados todavia.</p>
+              ) : (
+                <ul className="results-list">
+                  {searchResults.map((item) => (
+                    <li key={item.id}>
+                      <strong>{item.title}</strong>
+                      <div>{item.description}</div>
+                    </li>
+                  ))}
+                </ul>
+              )}
+              {searchError && <p className="lc-error">{searchError}</p>}
             </div>
           </div>
         )
