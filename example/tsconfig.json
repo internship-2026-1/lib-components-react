@@ -13,12 +13,7 @@
     "lib": ["../src"],
     "lib/*": ["../src/*"]
     }
-<<<<<<< HEAD
-  },
-  "include": ["src"]
-=======
 },
 "include": ["./src", "../src"],
 "exclude": ["../node_modules"]
->>>>>>> 0900aca2fcda757d016f306b51204d6b9d11a950
 }
