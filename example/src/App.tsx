@@ -1,9 +1,17 @@
 import React, { useState } from 'react'
-import { Input, Button, FormField, Textarea, Select, Text } from 'lib'
+import { Input, Button, FormField, Textarea, Select, Text, SearchBar } from 'lib'
 
-type ComponentKey = 'Button' | 'Input' | 'Textarea' | 'Select' | 'Typography'
+type ComponentKey = 'Button' | 'Input' | 'Textarea' | 'Select' | 'Typography' | 'SearchBar'
 
-const components: ComponentKey[] = ['Button', 'Input', 'Textarea', 'Select', 'Typography']
+const components: ComponentKey[] = ['Button', 'Input', 'Textarea', 'Select', 'Typography', 'SearchBar']
+
+const searchConfig = {
+  url: 'https://fakestoreapi.com/products',
+  fields: ['title', 'category', 'description'],
+  displayField: 'title',
+  placeholder: 'Buscar en la tienda...',
+  buttonText: 'Search'
+}
 
 export default function App() {
   const [selected, setSelected] = useState<ComponentKey>('Button')
@@ -141,6 +149,16 @@ export default function App() {
             </div>
           </div>
         )
+      case 'SearchBar':
+        return (
+          <div>
+            <h2>SearchBar</h2>
+            <div className="panel">
+              <SearchBar config={searchConfig} />
+            </div>
+          </div>
+        )
+
       default:
 
         return null
