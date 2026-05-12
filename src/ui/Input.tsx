@@ -1,19 +1,29 @@
-import React from 'react'
+import React from 'react';
+// @ts-ignore
+import '../styles.css';
 
-export interface InputProps
-  extends React.InputHTMLAttributes<HTMLInputElement> {
-  label?: string
+export interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> {
+  name?: string;
+  type?: string;
+  changeValue?: (value: string | undefined) => void; 
+  error?: string | null;
 }
 
 export const Input = React.forwardRef<HTMLInputElement, InputProps>(
-  ({ label, className = '', ...props }, ref) => {
+  ({ name, type, changeValue, error, className = "", ...props }, ref) => {
+    const inputClasses = `input-base ${error ? 'input-error' : ''} ${className}`;
     return (
-      <div className={`lc-field ${className}`}>
-        {label && <label className="lc-label">{label}</label>}
-        <input ref={ref} className="lc-input" {...props} />
-      </div>
-    )
+      <input
+        ref={ref}
+        name={name}
+        type={type}
+        // Para evitar problemas se agrega ?. en caso de que changeValue sea undefined
+        onChange= {(e) => changeValue?.(e.target.value)}
+        className={inputClasses}
+        {...props}
+      />
+    );
   }
-)
+);
 
-Input.displayName = 'Input'
+Input.displayName = 'Input';

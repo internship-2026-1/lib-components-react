@@ -3,6 +3,7 @@ node_modules/
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+pnpm-lock.yaml
 
 # Build output
 dist/
@@ -18,6 +19,9 @@ build/
 
 # OS
 .DS_Store
+
+# Documentation (local only)
+CARDS_GUIDE.md
 Thumbs.db
 
 # Logs
