@@ -1,3 +1,5 @@
+import './styles.css'
+
 export { Button } from './ui/Button'
 export { Input } from './ui/Input'
 export { Textarea } from './ui/Textarea'

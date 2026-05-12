@@ -1,16 +1,27 @@
 {
   "name": "lib-components-react",
-  "version": "0.1.0",
-  "private": true,
+  "version": "1.0.0",
   "main": "dist/index.js",
   "module": "dist/index.esm.js",
   "types": "dist/index.d.ts",
+  "exports": {
+    ".": {
+      "import": "./dist/index.esm.js",
+      "require": "./dist/index.js",
+      "types": "./dist/index.d.ts"
+    },
+    "./style.css": "./dist/style.css"
+  },
   "files": [
     "dist"
   ],
+  "sideEffects": [
+    "*.css"
+  ],
   "scripts": {
-    "build": "tsc -p tsconfig.build.json && vite build --config example/vite.config.ts",
+    "build": "vite build --config vite.lib.config.ts && tsc -p tsconfig.build.json",
     "dev": "vite --config example/vite.config.ts",
+    "prepare": "npm run build",
     "test": "echo \"No tests configured\""
   },
   "peerDependencies": {
