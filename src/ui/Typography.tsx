@@ -1,5 +1,5 @@
 import React from "react";
-type TypographysVariant = "DisplayLarge" | "HeadlineLarge" | "HeadlineMedium" | "BodyLarge" | "LabelLarge" | "code";
+type TypographysVariant = "DisplayLarge" | "HeadlineLarge" | "HeadlineMedium" | "BodyLarge" | "LabelLarge";
 
 type TypographyProps = {
     variant: TypographysVariant;
@@ -15,7 +15,6 @@ const TipografiaVar: Record<TypographysVariant, string> = {
     HeadlineMedium: "typography typography--headline-medium",
     BodyLarge: "typography typography--body-large",
     LabelLarge: "typography typography--label-large",
-    code: "typography typography--code"
 }
 
 const defaultTags: Record<TypographysVariant, keyof JSX.IntrinsicElements> = {
@@ -23,8 +22,7 @@ const defaultTags: Record<TypographysVariant, keyof JSX.IntrinsicElements> = {
     HeadlineLarge: "p",
     HeadlineMedium: "p",
     BodyLarge: "p",
-    LabelLarge: "p",
-    code: "p",
+    LabelLarge: "p"
 }
 
 export function Text({

@@ -620,8 +620,21 @@ export default function App() {
               <div className="panel">
                 <Text variant="LabelLarge">CONFIGURAR AHORA</Text>
               </div>
-              <div className="panel">
-                <Text variant="code">npm install @techspec/core</Text>
+
+              <div className='panel'>
+                <Text variant='HeadlineMedium'>
+                  Especificaciones tecnicas
+                </Text>
+              </div>
+              <div className='panel'>
+                <Text variant='BodyLarge'>
+                  Diseñado para entusiastas y profesionales que valoran la calidad de construcción y los detalles técnicos.
+                </Text>
+              </div>
+              <div className='panel'>
+                <Text variant='LabelLarge'>
+                  CONFIGURAR AHORA
+                </Text>
               </div>
             </div>
           </div>
