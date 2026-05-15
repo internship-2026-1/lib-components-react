@@ -1,3 +1,5 @@
+1.1.1, 15-05-2026
+- Componente Tipografia: Correcion de tokens
 1.0.0, 12-05-2026
 
 - Componente Card: Componente personalizado
